@@ -1,0 +1,144 @@
+{%extends 'basic.html'%}
+{%block title%}Play{%endblock%}
+{%block body%}
+    {%for i in p%}
+
+    <!-- <section class="latest-podcast-section" style="padding-top: 85px;
+    padding-bottom: 85px;" >
+          <div class="section-title text-center">
+          <h2>Latest Podcast</h2>
+          </div>
+          <div class="new-project-player">
+              <div class="row">
+                  <div class="col-4" style="">
+                    <img src="{{i.img.url}}" alt="">
+                  </div>
+                  <div class="col-lg-8">
+                      <div class="track-name">{{i.song_name}}</div>
+                      <div class="audio-wave" style="margin-left: -30px;position: relative;overflow: hidden;">
+                          <div id="audiowave">
+                      
+                             
+                      </div>
+                      <button id="play" class="btn-dark" onclick="if (!window.__cfRLUnblockHandlers) return false; wavesurfer.playPause();">LISTEN LIVE</button>
+                  </div>
+              </div>
+          </div>
+  
+    </section> -->
+    <section class="container mt-5">
+      <div class="row my-5">
+          <div class="col-lg-6 col-md-6 col-sm-6"> 
+            <img class="my-5 col-lg-6" src="{{i.img.url}}" alt="">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <h1 class="my-5 font-weight-bold">{{i.song_name}}</h1>
+            <h2 >Artist Name:-<i class="my-5  col-lg-6 font-weight-bold">{{i.artist}}</i></h2>
+            </div>
+       </div>
+       <div class="my-5">
+          <div id="waveform"></div> 
+        </div>
+        <div class="container">
+        <div class="row" style="background-color: black;">
+          <div class="col-md-3 col-lg-3 col-sm-12 col-12 align-self-center">
+            <button onclick="wavesurfer.skipBackward()" class="my-2  btn btn-outline-light w-100"><i class="fas fa-backward"></i></button>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-12 col-12">
+            <button  onclick="wavesurfer.playPause()" class=" my-2  btn btn-outline-light w-100" ><i id ="pause" class="fas fa-pause-circle"></i></button>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-12 col-12">
+            <button onclick="wavesurfer.skipForward()" class="my-2 btn btn-outline-light w-100" ><i class="fas fa-forward"></i></button>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-12 col-12">
+            <button onclick="wavesurfer.stop()" class="my-2 btn btn-outline-light w-100 " ><i class="fas fa-stop "></i></button>
+          </div>
+        </div> 
+      </div>
+         
+      </section>
+      <section class="col-md-12 col-sm-12 col-lg-12">
+        <div class="container-fluid my-5 mt-5">
+          <table class="table">
+            <div class="row justify-content-center mb-3 pb-3">
+              <thead class="thead-dark col-md-12 text-center">
+                
+                <tr>
+                  <th scope="col-12" colspan="4" class="">Recommended Songs</th>
+                </tr>
+              </thead>
+              {% for j in s%}
+              <tbody>
+                <tr class="text-center">
+                  <div class="row">
+                    <td><a href="{% url 'play' j.song_name %}"><img src="{{j.img.url}}" width="100px" ></a></td>
+                    <td style="vertical-align: middle;"><a class="lead text-dark text-display-none font-weight-bold text-center" href="{% url 'play' j.song_name %}">{{j.song_name}}</a> </td>
+                    <td style="vertical-align: middle;" class="text-black font-weight-bold text-center">{{j.album}}</td>
+                    <td style="vertical-align: middle;" class="text-black font-weight-bold text-center">{{j.artist}}</td>
+                  </div>
+                </tr>
+              </tbody>
+              {%endfor%}
+              </table>
+            </table>
+          </div>
+    
+      </section>
+     
+  
+  
+  
+    <script>
+
+
+      var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'black',
+        progressColor: '#ff8a80',
+        cursorColor:'black',
+        barGap:2,
+        barHeight:1,
+        barWidth:2,
+        responsive:true,
+    
+  
+        });
+
+      wavesurfer.load('{{i.audio_file.url}}');
+      
+      wavesurfer.on('ready', function () {
+        wavesurfer.play();
+      });
+
+      wavesurfer.on('pause',function(){
+        
+        $('#pause').removeClass('fas fa-pause-circle');
+        $('#pause').addClass('fas fa-play-circle')
+      });
+
+      wavesurfer.on('play',function(){
+        
+        $('#pause').removeClass('fas fa-play-circle');
+        $('#pause').addClass('fas fa-pause-circle')
+      });
+        
+  
+      
+      
+
+
+      
+
+        /*var wavesurfer=WaveSurfer.create({container:'#audiowave',waveColor:'black',progressColor:'black',barWidth:1,barGap:1,cursorColor:'#ffe400',height:237,barHeight:.7,});
+        wavesurfer.load('{{i.audio_file.url}}');
+        wavesurfer.on('audioprocess',function(){
+          var clipCurrentTime=wavesurfer.getCurrentTime();
+          document.getElementById('cliptime').innerHTML=formatSecondsAsTime(clipCurrentTime);
+          var clipLength=wavesurfer.getDuration();var cldiv=Math.floor(clipLength/3);
+          $(document).ready(function($){if((cldiv*2)<clipCurrentTime){$('#cliptime').addClass('half');}else{$('#cliptime').removeClass('half');}});});function formatSecondsAsTime(secs){var hr=Math.floor(secs/3600);var min=Math.floor((secs-(hr*3600))/60);var sec=Math.floor(secs-(hr*3600)-(min*60));if(min<10){min="0"+min;}
+        if(sec<10){sec="0"+sec;}
+        return min+':'+sec;}
+        $(document).ready(function($){$('#cliptime').appendTo('wave wave');});*/
+    </script>
+    {%endfor%}
+  {%endblock%}

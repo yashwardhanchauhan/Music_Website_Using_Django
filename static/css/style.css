@@ -1,0 +1,140 @@
+body{
+  background-color: #fbfbf8;
+  box-sizing: border-box;
+  height: 100%; 
+  background: 100%;
+}
+.spad {
+  padding-top: 85px;
+  padding-bottom: 85px;
+}
+.bg-dark{
+  background-color: black;
+}
+.bg-dark:hover{
+  color: white;
+}
+
+h3{
+    color: aliceblue;
+  }
+  .box{
+    width:400px;
+    margin: 0 auto;
+    position: relative;
+    perspective: 1000px;
+    top:100px;
+    margin-bottom:100px;
+}
+
+.box .box-img{
+    transform: rotateY(0);
+    transition: all 0.5s ease-in-out 0s;
+}
+.box:hover .box-img{
+    transform: rotateY(-90deg);
+}
+.box .box-img img{
+    width:100%;
+    height: auto;
+}
+
+.box-content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    color:white;
+    background-color: rgba(0,0,0,0.7);
+    transform:rotateY(90deg);
+    transition: all 0.5s ease-in-out 0s;
+
+}
+
+.box:hover .box-content{
+    transform:rotateY(0);
+
+}
+
+
+html,
+.view {
+  height: 100%; 
+  background: 100%;
+}
+
+#mobile-box {
+  width: 350px; }
+
+
+
+.card {
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+
+.card .view {
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-right-radius: 10px; }
+
+.card h5 a {
+  color: #0d47a1;
+}
+.card h5 a:hover {
+  color: #072f6b;
+}
+
+#pButton {
+  float: left; }
+
+#timeline {
+  width: 90%;
+  height: 2px;
+  margin-top: 20px;
+  margin-left: 10px;
+  float: left;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3); }
+
+#pButton {
+  margin-top: 12px;
+  cursor: pointer; }
+
+#playhead {
+  width: 8px;
+  height: 8px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin-top: -3px;
+  background: black;
+  cursor: pointer; }
+
+  /*footer */
+  .site-footer{padding:4em 0;background:rgb(0, 0, 0)}  
+  @media(min-width:768px){.site-footer{padding:7em 0}}
+  .site-footer p{color:#737373}
+  .site-footer h2,.site-footer h3,.site-footer h4,.site-footer h5{color:#fff}
+  .site-footer a{color:#999}
+  .site-footer a:hover{color:#fff}
+  .site-footer ul li{margin-bottom:10px}
+  .site-footer .footer-heading{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:#fff;position:relative;padding-bottom:15px}
+  .site-footer .footer-heading:before{content:"";background:#ff8a80;width:40px;height:2px;position:absolute;bottom:0}
+  
+
+
+.bg-dark{
+  background-color: black;
+}
+  
+.btn-dark:hover{
+    box-shadow:160px 0 0 #feffffd0 inset;
+}
+
+
+

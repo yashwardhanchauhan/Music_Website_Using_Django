@@ -1,0 +1,43 @@
+{%extends 'basic.html'%}
+{%block title%}Songs{%endblock%}
+{% load static %}
+  {%block body%}
+
+    
+
+<!-- {{i.audio_file.url}}
+<img src="{{i.img.url}}">
+<audio controls>
+    <source src="{{i.audio_file.url}}" type="audio/mpeg">
+</audio> -->
+
+<div class="container-fluid my-5 mt-5">
+<table class="table">
+  <div class="row justify-content-center mb-3 pb-3">
+    <thead class="thead-dark col-md-12 text-center">
+      
+      <tr>
+        <th scope="col-12" colspan="4" class="">List of {{i.category}} Songs</th>
+      </tr>
+    </thead>
+    {% for i in s%}
+    <tbody>
+      
+      <tr class="text-center">
+        <div class="row">
+          <a href="{% url 'play' i.song_name %}">
+          <td><a href="{% url 'play' i.song_name %}"><img src="{{i.img.url}}" width="100px" ></a></td>
+          <td style="vertical-align: middle;"><a class="lead text-dark font-weight-bold text-center" href="{% url 'play' i.song_name %}">{{i.song_name}}</a> </td>
+          <td style="vertical-align: middle;" class="text-dark font-weight-bold text-center">{{i.album}}</td>
+          <td style="vertical-align: middle;" class="text-dark font-weight-bold text-center">{{i.artist}}</td>
+        </a>
+        </div>
+      
+      </tr>
+      
+      {%endfor%}
+    </tbody>
+    </table>
+  </table>
+</div>
+  {%endblock%}
