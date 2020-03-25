@@ -251,20 +251,28 @@
             <form action="register" method="POST" >
               {%csrf_token %}
               <div align="center" class="mt-3 px-2" >
-              <input type="text" class="p-1 m-3" name="firstname"  placeholder="First Name: "><br>
-               
-              <input type="text" class="p-1 m-3" name="lastname"  placeholder="Last Name: "><br>
-              
-              <input type="email" class="p-1 m-3" name="email" placeholder="E-Mail"><br>
-              
-              <input type="text" class="p-1 m-3" name="username"  placeholder="User Name"><br>
-              
-              <input type="password" class="p-1 m-3"  name="pwd1"  placeholder="Password"><br>
-              
-              <input type="password" class="p-1 m-3"  name="pwd2"  placeholder="Confirm Password"><br>
-              <div >
-              <input type="submit"   value="Register" class="btn btn-primary py-3 px-5"><br>
-              </div>  
+                  <div class="md-form form-lg">
+                    <input type="text" id="inputLGEx" class="form-control form-control-lg" name="firstname" placeholder="First Name: " required>
+                  </div><br><br>
+                  <div class="md-form form-lg">
+                    <input type="text" id="inputLGEx" class="form-control form-control-lg" name="lastname" placeholder="Last Name: " required>
+                  </div><br><br>
+                  <div class="md-form form-lg">
+                    <input type="email" id="inputLGEx" class="form-control form-control-lg" name="email" placeholder="E-mail" required>
+                  </div><br><br>
+                  <div class="md-form form-lg">
+                    <input type="text" id="inputLGEx" class="form-control form-control-lg" name="username" placeholder="User Name: " required>
+                  </div><br><br>
+                  <div class="md-form form-lg">
+                    <input type="password" id="inputLGEx" class="form-control form-control-lg" name="pwd1" placeholder="Password" required>
+                  </div><br><br>
+                  <div class="md-form form-lg">
+                    <input type="password" id="inputLGEx"  class="form-control form-control-lg" name="pwd2" placeholder="Confirm Password" required>
+                  </div><br><br>
+            
+                  <div>
+                    <input type="submit"   value="Register" class="btn btn-dark py-3 px-5"><br>
+                  </div>  
               </div>
             </form>
           {%for message in messages%}
@@ -280,76 +288,6 @@
 
 
 
-    {%block body%}
-    {%endblock%}
 
 
-    <footer class="site-footer ">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-              <div class="mb-5">
-                              <h3 class="footer-heading mb-4">About My Music</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!</p>
-              </div>
-          </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="row mb-5">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Navigations</h3>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">DJs</a></li>
-                  <li><a href="#">News</a></li>
-                  <li><a href="#">Top 20 of the week</a></li>
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Membership</a></li>
-              </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Follow Us</h3>
-                <div>
-                <a href="#" class="pl-0 pr-3"><i class="fab fa-facebook-f fa-lg white-text "> </i></a>
-                <a href="#" class="pl-3 pr-3"><span class="fab fa-twitter fa-lg white-text "></span></a>
-                <a href="#" class="pl-3 pr-3"><span class="fab fa-google-plus-g fa-lg white-text "></span></a>
-                <a href="#" class="pl-3 pr-3"><span class="fab fa-linkedin-in fa-lg white-text "></span></a>
-                <a href="#" class="pl-3 pr-3"><span class="fab fa-instagram fa-lg white-text "></span></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        <div class="col-lg-4 mb-5 mb-lg-0">
-        <div class="mb-5">
-        <h3 class="footer-heading mb-4">Watch Live Streaming</h3>
-        <div class="block-16">
-        <figure>
-        <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-        <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span class="icon-play"></span></a>
-        </figure>
-        </div>
-        </div>
-        </div>
-        
-        </div>
     
-      </div>
-      <div class="footer-copyright text-center pt-5 pb-2">© 2020 Copyright:
-        <a href="/"> Music.com</a>
-      </div>
-      </footer>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>  
