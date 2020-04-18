@@ -1,212 +1,45 @@
 {%load static%}
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{%block title%}My Music{%endblock%}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Satisfy">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{%block title%} Your Own | Musix{%endblock%}</title>
+    <meta name="" content="">
+    <link rel="icon" type="image/png" sizes="500x500" href="{% static 'img/Black and Yellow Circle Band Logo.png' %}">
+    <link rel="icon" type="image/png" sizes="500x500" href="{% static '/Black%20and%20Yellow%20Circle%20Band%20Logo.png' %}">
+    <link rel="icon" type="image/png" sizes="500x500" href="{% static 'img/Black%20and%20Yellow%20Circle%20Band%20Logo.png' %}">
+    <link rel="icon" type="image/png" sizes="500x500" href="{% static 'img/Black%20and%20Yellow%20Circle%20Band%20Logo.png' %}">
+    <link rel="icon" type="image/png" sizes="500x500" href="{% static 'img/Black%20and%20Yellow%20Circle%20Band%20Logo.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/Pretty-Footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="https://unpkg.com/wavesurfer.js"></script>
-    <style>
-      .y3-nav {
-        background-color: black !important;
-      }
-      body{
-        background-color: #fbfbf8;
-        box-sizing: border-box;
-        height: 100%; 
-        background: 100%;
-      }
-      .spad {
-        padding-top: 85px;
-        padding-bottom: 85px;
-      }
-      .bg-dark{
-        background-color: black;
-      }
-      .bg-dark:hover{
-        color: white;
-      }
-      
-      h3{
-          color: aliceblue;
-        }
-        .box{
-          width:400px;
-          margin: 0 auto;
-          position: relative;
-          perspective: 1000px;
-          top:100px;
-          margin-bottom:100px;
-      }
-      
-      .box .box-img{
-          transform: rotateY(0);
-          transition: all 0.5s ease-in-out 0s;
-      }
-      .box:hover .box-img{
-          transform: rotateY(-90deg);
-      }
-      .box .box-img img{
-          width:100%;
-          height: auto;
-      }
-      
-      .box-content{
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          top:0;
-          left:0;
-          padding: 60px 20px;
-          box-sizing: border-box;
-          text-align: center;
-          color:white;
-          background-color: rgba(0,0,0,0.7);
-          transform:rotateY(90deg);
-          transition: all 0.5s ease-in-out 0s;
-      
-      }
-      
-      .box:hover .box-content{
-          transform:rotateY(0);
-      
-      }
-      
-      
-      .view {
-        height: 100%; 
-        background: 100%;
-      }
-      
-      #mobile-box {
-        width: 350px; }
-      
-      
-      
-      .card {
-        -webkit-border-radius: 10px;
-        border-radius: 10px; }
-      
-      .card .view {
-        -webkit-border-top-left-radius: 10px;
-        border-top-left-radius: 10px;
-        -webkit-border-top-right-radius: 10px;
-        border-top-right-radius: 10px; }
-      
-      .card h5 a {
-        color: #0d47a1;
-      }
-      .card h5 a:hover {
-        color: #072f6b;
-      }
-      
-      #pButton {
-        float: left; }
-      
-      #timeline {
-        width: 90%;
-        height: 2px;
-        margin-top: 20px;
-        margin-left: 10px;
-        float: left;
-        -webkit-border-radius: 15px;
-        border-radius: 15px;
-        background: rgba(0, 0, 0, 0.3); }
-      
-      #pButton {
-        margin-top: 12px;
-        cursor: pointer; }
-      
-      #playhead {
-        width: 8px;
-        height: 8px;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-        margin-top: -3px;
-        background: black;
-        cursor: pointer; }
-      
-        /*footer */
-        .site-footer{padding:4em 0;background:rgb(0, 0, 0)}  
-        @media(min-width:768px){.site-footer{padding:7em 0}}
-        .site-footer p{color:#737373}
-        .site-footer h2,.site-footer h3,.site-footer h4,.site-footer h5{color:#fff}
-        .site-footer a{color:#999}
-        .site-footer a:hover{color:#fff}
-        .site-footer ul li{margin-bottom:10px}
-        .site-footer .footer-heading{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:#fff;position:relative;padding-bottom:15px}
-        .site-footer .footer-heading:before{content:"";background:#ff8a80;width:40px;height:2px;position:absolute;bottom:0}
-        
-      
-      
-      .bg-dark{
-        background-color: black;
-      }
-        
-      .btn-dark:hover{
-          box-shadow:160px 0 0 #feffffd0 inset;
-      }
-      
-      
-      
-      
-    </style>
-    
 </head>
+
 <body>
-
-
-
-  
-
-     <!--Navbarrr-->
-     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark mb-3 y3-nav">
-        <a class="navbar-brand" href="{% url 'index' %}">Music</a>
-        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"><span class="fab fa-itunes-note"  aria-hidden="true"></span>&nbsp; Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="fas fa-compact-disc"  aria-hidden="true"></span>&nbsp;Top Trending</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-list-alt"  aria-hidden="true"></span>&nbsp;
-                Category
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="">Top 20 of the week</a>
-                <a class="dropdown-item" href="{% url 'songs' category='Hindi' %}">Hindi</a>
-                <a class="dropdown-item" href="{% url 'songs' category='English' %}">English</a>
-                <a class="dropdown-item" href="{% url 'songs' category='Punjabi' %}">Punjabi</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Others</a>
-              </div>
-            </li>
-          
-            {% if user.is_authenticated%}
-			      <li class="nav-item active"><a href="/" class="nav-link">Hello,{{user.first_name}}</a></li>
-	          <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
-			      {%else%}
-	          <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalLong">Register</a></li>
-			      <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
-            {%endif%}
-      </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control rounded-pill mr-sm-2" type="search" name="q"placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-          </form>
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'index' %}"><i class="fa fa-music logo"></i></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Trending</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'songs' category='Hindi' %}">HINDI</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'songs' category='English' %}">ENGLISH</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'songs' category='Punjabi' %}">PUNJABI</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">CONTACT</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">FAQ</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">SUPPORT</a></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+            </div>
         </div>
-      </nav>
+    </nav>
+
 
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
