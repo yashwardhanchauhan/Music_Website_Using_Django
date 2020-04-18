@@ -20,7 +20,8 @@ def play(request,song_name):
     return render(request,'play.html',{'p':p,'s':s,})
 
 
-
+def serviceworker(request):
+    return render(request,'pwabuilder-sw.js',content_type="application/javascript")
 
 
 #ACCOUNT

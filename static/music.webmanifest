@@ -1,0 +1,22 @@
+{
+	"dir" : "ltr",
+	"lang" : "fi",
+	"name" : "Your own | Musix",
+	"scope" : "/",
+	"display" : "standalone",
+	"start_url" : "/",
+	"short_name" : "Your own | Musix",
+	"theme_color" : "transparent",
+	"description" : "Your own | Musix Application for Music Lovers ",
+	"orientation" : "any",
+	"background_color" : "transparent",
+	"related_applications" : "",
+	"prefer_related_applications" : "false",
+	"icons" : [
+		{
+			"src": "img/logo.png",
+			"sizes": "512x512"
+		}],
+	"screenshots" : [],
+	"generated" : "true"
+}
