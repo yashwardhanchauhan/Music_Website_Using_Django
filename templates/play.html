@@ -1,25 +1,43 @@
 {%include 'header.html'%}
-    
+
     {%for i in p%}
-    <section class="container mt-5">
-      <div class="row my-5">
-          <div class="col-lg-6 col-md-6 col-sm-6"> 
-            <img class="my-5 col-lg-6" id="img" src="{{i.img.url}}" alt="">
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <h1 class="my-5 font-weight-bold" id="songname">{{i.song_name}}</h1>
-            <h2 >Artist Name:-<i class="my-5  col-lg-6 font-weight-bold" id="artistname">{{i.artist}}</i></h2>
+        <section class="container mt-5">
+            <div class="row my-5">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <img class="my-5 col-lg-6" id="img" src="{{i.img.url}}" alt="">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <h1 class="my-5 font-weight-bold" id="songname">{{i.song_name}}</h1>
+                    <h2 >Artist Name:-<i class="my-5  col-lg-6 font-weight-bold" id="artistname">{{i.artist}}</i></h2>
+                </div>
             </div>
-       </div>
-       <audio src="{{i.audio_file}}" controls></audio>
-      </section>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12" style="display: grid; align-content: center">
+                    <audio src="{{i.audio_file}}" id="audio_control" controls ></audio>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="playlist" style="border: 2px solid; border-top-left-radius: 20px;border-top-right-radius: 20px;">
+                        <h2 class="text-center">Playlist</h2>
+                    </div>
+                    <div class="playlist container" style="border: 2px solid; border-bottom-left-radius: 20px;border-bottom-right-radius: 20px; border-top:0; padding:20px; height: 250px">
+                        <p><i class="fa fa-play"></i> Sample Song 1</p>
+                        <hr>
+                        <p><i class="fa fa-play"></i> Sample Song 2</p>
+                        <hr>
+                        <p><i class="fa fa-play"></i> Sample Song 3</p>
+                        <hr>
+                        <p class="text-muted text-center">End of Playlist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
       {%endfor%}
       <section class="col-md-12 col-sm-12 col-lg-12">
         <div class="table-responsive my-5 mt-5">
           <table class="table">
             <div class="row justify-content-center mb-3 pb-3">
               <thead class="thead-dark col-md-12 text-center">
-                
+
                 <tr>
                   <th scope="col-12" colspan="4" class="col-md-12 col-sm-12 col-lg-12">Recommended Songs</th>
                 </tr>
@@ -36,15 +54,14 @@
                 </tr>
               </tbody>
               {%endfor%}
-              </table>
             </table>
           </div>
-    
+
       </section>
-     
-  
+
+
       {%include 'footer.html'%}
-    
-    
+
+
   </body>
   </html>
