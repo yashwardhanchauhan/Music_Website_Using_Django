@@ -1,29 +1,6 @@
 {%include 'header.html'%}
+    
     {%for i in p%}
-
-    <!-- <section class="latest-podcast-section" style="padding-top: 85px;
-    padding-bottom: 85px;" >
-          <div class="section-title text-center">
-          <h2>Latest Podcast</h2>
-          </div>
-          <div class="new-project-player">
-              <div class="row">
-                  <div class="col-4" style="">
-                    <img src="{{i.img.url}}" alt="">
-                  </div>
-                  <div class="col-lg-8">
-                      <div class="track-name">{{i.song_name}}</div>
-                      <div class="audio-wave" style="margin-left: -30px;position: relative;overflow: hidden;">
-                          <div id="audiowave">
-                      
-                             
-                      </div>
-                      <button id="play" class="btn-dark" onclick="if (!window.__cfRLUnblockHandlers) return false; wavesurfer.playPause();">LISTEN LIVE</button>
-                  </div>
-              </div>
-          </div>
-  
-    </section> -->
     <section class="container mt-5">
       <div class="row my-5">
           <div class="col-lg-6 col-md-6 col-sm-6"> 
@@ -34,26 +11,9 @@
             <h2 >Artist Name:-<i class="my-5  col-lg-6 font-weight-bold" id="artistname">{{i.artist}}</i></h2>
             </div>
        </div>
-       <div class="my-5">
-          <div id="waveform"></div> 
-        </div>
-        <div class="container">
-        <div class="row" style="background-color: black;">
-          <div class="col-md-3 col-lg-3 col-sm-12 col-12 align-self-center">
-            <button onclick="wavesurfer.skipBackward()" class="my-2  btn btn-outline-light w-100"><i class="fas fa-backward"></i></button>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-12 col-12">
-            <button  onclick="wavesurfer.playPause()" class=" my-2  btn btn-outline-light w-100" ><i id ="pause" class="fas fa-pause-circle"></i></button>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-12 col-12">
-            <button onclick="wavesurfer.skipForward()" class="my-2 btn btn-outline-light w-100" ><i class="fas fa-forward"></i></button>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-12 col-12">
-            <button   class="my-2 btn btn-outline-light w-100 repeat" ><i  id="repeat"  class="fas fa-random"></i></button>
-          </div>
-        </div> 
-      </div>
+       <audio src="{{i.audio_file}}" controls></audio>
       </section>
+      {%endfor%}
       <section class="col-md-12 col-sm-12 col-lg-12">
         <div class="table-responsive my-5 mt-5">
           <table class="table">
@@ -84,112 +44,7 @@
      
   
       {%include 'footer.html'%}
-    <script>
-
-
-      var wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        waveColor: 'black',
-        progressColor: '#ff8a80',
-        cursorColor:'black',
-        barGap:2,
-        barHeight:1,
-        barWidth:2,
-        responsive:true,
     
-  
-        });
-      var music='{{i.audio_file.url}}'
-      var src="{{i.img.url}}"
-      var name='{{i.song_name}}'
-      var artist='{{i.artist}}'
-      wavesurfer.load(music);
-      
-      wavesurfer.on('ready', function () {
-        wavesurfer.play();
-      });
-
-      wavesurfer.on('pause',function(){
-        
-        $('#pause').removeClass('fas fa-pause-circle');
-        $('#pause').addClass('fas fa-play-circle')
-      });
-
-      wavesurfer.on('play',function(){
-        
-        $('#pause').removeClass('fas fa-play-circle');
-        $('#pause').addClass('fas fa-pause-circle')
-      });
-
-      var finish=0
-      wavesurfer.on('finish',function(){
-        console.log("finish")
-        if(finish<queue.length){
-            var q=document.querySelector("#img")
-            q.setAttribute("src",queue[finish][0])
-            document.getElementById("songname").innerHTML = queue[finish][1];
-            document.getElementById("artistname").innerHTML = queue[finish][2];
-            wavesurfer.load(queue[finish][3])
-            finish+=1;
-        }
-        else if(finish==queue.length && queue.length!=0){
-          var q=document.querySelector("#img")
-            q.setAttribute("src",src)
-            document.getElementById("songname").innerHTML = name;
-            document.getElementById("artistname").innerHTML =artist;
-            wavesurfer.load(music)
-            finish=0;
-        }
-        else{
-
-          wavesurfer.load(music)
-        }
-
-        
-
-      });
-      var queue=[]
-      var s=1
-      $(".repeat").on('click',function(){
-        
-        if(s%2!=0){
-          {%for i in s%}
-                  queue.push(
-                  ['{{i.img.url}}','{{i.song_name}}','{{i.artist}}','{{i.audio_file.url}}']
-                  )
-
-          {%endfor%}
-
-        $('#repeat').removeClass('fas fa-random');
-        $('#repeat').addClass('fas fa-heart')
-
-        }
-        else if(s%2==0)
-        {
-        $('#repeat').removeClass('fas fa-heart')
-        $('#repeat').addClass('fas fa-random');
-        queue=[]
-          
-        }
-        console.log(queue)
-        console.log(s)
-        s=s+1
-
-      }); 
-
-      
-        
-        /*var wavesurfer=WaveSurfer.create({container:'#audiowave',waveColor:'black',progressColor:'black',barWidth:1,barGap:1,cursorColor:'#ffe400',height:237,barHeight:.7,});
-        wavesurfer.load('{{i.audio_file.url}}');
-        wavesurfer.on('audioprocess',function(){
-          var clipCurrentTime=wavesurfer.getCurrentTime();
-          document.getElementById('cliptime').innerHTML=formatSecondsAsTime(clipCurrentTime);
-          var clipLength=wavesurfer.getDuration();var cldiv=Math.floor(clipLength/3);
-          $(document).ready(function($){if((cldiv*2)<clipCurrentTime){$('#cliptime').addClass('half');}else{$('#cliptime').removeClass('half');}});});function formatSecondsAsTime(secs){var hr=Math.floor(secs/3600);var min=Math.floor((secs-(hr*3600))/60);var sec=Math.floor(secs-(hr*3600)-(min*60));if(min<10){min="0"+min;}
-        if(sec<10){sec="0"+sec;}
-        return min+':'+sec;}
-        $(document).ready(function($){$('#cliptime').appendTo('wave wave');});*/
-    </script>
-    {%endfor%}
+    
   </body>
   </html>
