@@ -15,18 +15,17 @@
     <thead class="thead-dark col-md-12 text-center">
       
       <tr>
-        <th scope="col-12" colspan="4" class="">List of {{i.category}} Songs</th>
+        <th scope="col-12" colspan="4" class="">List of Hindi Albums</th>
       </tr>
     </thead>
-    {% for i in s%}
+    {% for i in a%}
     <tbody>
       
       <tr class="text-center">
         <div class="row">
-          <td><a href="{% url 'play' i.song_name %}"><img src="/media/{{i.img}}" width="100px" ></a></td>
-          <td style="vertical-align: middle;"><a class="lead text-dark font-weight-bold text-center" href="{% url 'play' i.song_name %}">{{i.song_name}}</a> </td>
-          <td style="vertical-align: middle;" class="text-dark font-weight-bold text-center">{{i.album_title}}</td>
-          <td style="vertical-align: middle;" class="text-dark font-weight-bold text-center">{{i.song_artist}}</td>
+          <td><a href="{% url 'songs' i.id %}"><img src="{{i.img.url}}" width="100px" ></a></td>
+          <td style="vertical-align: middle;"><a class="lead text-dark font-weight-bold text-center" href="{% url 'songs' i.id %}">{{i.album_title}}</a> </td>
+          
         </a>
         </div>
       

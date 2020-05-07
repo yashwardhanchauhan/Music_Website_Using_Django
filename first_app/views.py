@@ -2,22 +2,31 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .models import Songs
+from .models import Song,Album
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
 
-def songs(request,category):
-    s=Songs.objects.filter(category=category)
-    # print(s)
-    return render(request,'songs.html',{'s':s})
+def songs(request,id):
+    song=Song.objects.raw('''select a.album_title,a.img,s.id,s.song_name,s.song_url,s.song_artist from first_app_album as a join first_app_song as s on a.id=s.album_id_id
+where a.id=%s;
+    '''%(id))
+    return render(request,'songs.html',{'s':song})
+
+def album(request,category):
+    a=Album.objects.filter(category=category)
+    return render(request,'album.html',{'a':a})
 
 def play(request,song_name):
-    p=Songs.objects.filter(song_name=song_name)
-    category=p[0].category
-    s=Songs.objects.exclude(song_name=song_name).filter(category=category)
-    return render(request,'play.html',{'p':p,'s':s,})
+    p=Song.objects.filter(song_name=song_name)
+    album_id=p.values('album_id')[0]['album_id']
+    img=Album.objects.filter(id=album_id).values('img')[0]['img']
+    playlist=Song.objects.filter(album_id=album_id).order_by('song_name')
+    category=Album.objects.filter(id=album_id).values('category')[0]['category']
+    s=Album.objects.exclude(id=album_id).filter(category=category)
+    return render(request,'play.html',{'p':p,'img':img,'playlist':playlist,'s':s})
+
 
 
 def serviceworker(request):
